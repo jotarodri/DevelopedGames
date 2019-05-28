@@ -1,2 +1,2 @@
-# JuegosDAW18-19
-Juego creado por Gaston Tomas Huete y Jorge Rodrigez
+# DevelopedGames
+Uno de los juegos creado por Gaston Tomas Huete y Jorge Rodrigez.
