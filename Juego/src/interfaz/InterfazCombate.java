@@ -124,7 +124,7 @@ public class InterfazCombate extends JFrame {
 		btnDefender.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				guerrero.setBackground("src/imagenes/sprites/crusader/crusader_A/defend.png");
+				guerrero.setBackground("src/imagenes/sprites/HeroeHombre/defend.png");
 				
 			}
 		});
@@ -144,7 +144,7 @@ public class InterfazCombate extends JFrame {
 	public void posicionInicio() {
 		
 		
-		guerrero.setBackground("src/imagenes/sprites/crusader/crusader_A/attack_sword.png");
+		guerrero.setBackground("src/imagenes/sprites/HeroeHombre/attack_sword.png");
 		guerrero.setBounds(125, 187, 321, 301);
 		
 		

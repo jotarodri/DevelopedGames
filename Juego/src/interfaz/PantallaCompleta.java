@@ -67,7 +67,7 @@ public class PantallaCompleta extends JFrame {
 		setExtendedState(MAXIMIZED_BOTH);
 		//----
 		
-		contentPane.setBackground("src/imacd genes/imagenInterfazNG.jpg");
+		contentPane.setBackground("src/imagenes/imagenInterfazNG.jpg");
 		setContentPane(contentPane);
 		
 		//
@@ -79,7 +79,7 @@ public class PantallaCompleta extends JFrame {
 		contentPane.add(panelTop, BorderLayout.NORTH);
 		
 		JLabel label = new JLabel("");
-		label.setIcon(new ImageIcon(PantallaCompleta.class.getResource("/imegenes/TituloTransparente.png")));
+		label.setIcon(new ImageIcon(PantallaCompleta.class.getResource("src/imagenes/TituloTransparente.png")));
 		panelTop.add(label);
 		
 		JPanel panelBottom = new JPanel();
