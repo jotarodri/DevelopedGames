@@ -21,16 +21,20 @@ import javax.sound.sampled.SourceDataLine;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.sound.sampled.DataLine.Info;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
+
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 import java.awt.event.ActionEvent;
 
-public class PantallaCompleta extends JFrame {
+public class PantallaInicial extends JFrame {
 
 	/**
 	 * 
 	 */
+	private static final int ANCHO = 1200;
+	private static final int ALTO = 700;
 	private static final long serialVersionUID = 1L;
 	private Imagen contentPane;
 	//private AudioFilePlayer player;
@@ -43,7 +47,7 @@ public class PantallaCompleta extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					PantallaCompleta frame = new PantallaCompleta();
+					PantallaInicial frame = new PantallaInicial();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -55,38 +59,39 @@ public class PantallaCompleta extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public PantallaCompleta() {
+	public PantallaInicial() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		
+		setBounds(100, 100, ANCHO, ALTO);
 		contentPane = new Imagen();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
 		
 		//pantalla completa
-		setUndecorated(true); 
-		setExtendedState(MAXIMIZED_BOTH);
+		//setUndecorated(true); 
+		//setExtendedState(MAXIMIZED_BOTH);
 		//----
 		
 		contentPane.setBackground("src/imagenes/imagenInterfazNG.jpg");
 		setContentPane(contentPane);
+		contentPane.setLayout(new BorderLayout(0, 0));
 		
 		//
 		//player = new AudioFilePlayer ();
 		//
 		
-		JPanel panelTop = new JPanel();
+		Imagen panelTop = new Imagen();
 		panelTop.setOpaque(false);
 		contentPane.add(panelTop, BorderLayout.NORTH);
 		
 		JLabel label = new JLabel("");
-		label.setIcon(new ImageIcon(PantallaCompleta.class.getResource("src/imagenes/TituloTransparente.png")));
+		label.setIcon(new ImageIcon(PantallaInicial.class.getResource("/imagenes/titulo.png")));
 		panelTop.add(label);
 		
 		JPanel panelBottom = new JPanel();
 		panelBottom.setOpaque(false);
 		contentPane.add(panelBottom, BorderLayout.SOUTH);
 		
-		MiBoton btnCerrar = new MiBoton("Cerrar");
+		JButton btnCerrar = new JButton("Cerrar");
 		btnCerrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
@@ -94,9 +99,8 @@ public class PantallaCompleta extends JFrame {
 				
 			}
 		});
-		panelBottom.add(btnCerrar);
 		
-		MiBoton btnNuevaPartida = new MiBoton("Nueva partida");
+		JButton btnNuevaPartida = new JButton("Nueva partida");
 		btnNuevaPartida.addActionListener(new ActionListener() {
 			
 			@Override
@@ -107,6 +111,11 @@ public class PantallaCompleta extends JFrame {
 			}
 		});
 		panelBottom.add(btnNuevaPartida);
+		
+		JButton btnCargarPartida = new JButton("Cargar partida");
+		btnCargarPartida.setEnabled(false);
+		panelBottom.add(btnCargarPartida);
+		panelBottom.add(btnCerrar);
 		
        //player.play("src/musica/cancionkh3.wav");
         
@@ -163,5 +172,4 @@ public class PantallaCompleta extends JFrame {
             line.write(buffer, 0, n);
         }
     }
-
 }

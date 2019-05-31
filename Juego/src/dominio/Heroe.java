@@ -19,7 +19,7 @@ public class Heroe extends Personaje{
 		this.fuerzaTotal = fuerzaPropia;       // <- echa solo para el sistema de combate
 		this.vitalidadPropia = vitalidadPropia;//<- aqui se modificaran todos los valores reducciones o sumas y se restaurara desde arriba pero no divisiones
 		this.vitalidadTotal = vitalidadPropia; // <- echa solo para el sistema de combate
-		this.contador = contador;
+		this.magia = contador;
 		this.critico = critico;
 		this.raza = raza;
 		this.clase = clase;

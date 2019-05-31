@@ -18,14 +18,14 @@ public abstract class Personaje {
 	protected int fuerzaTotal;
 	protected int vitalidadPropia;
 	protected int vitalidadTotal;
-	protected int contador;
-	protected int critico;//es un porcentaje
+	protected int magia;
+	protected int critico;
 	protected String raza;
 	protected String clase;
 	
 	/* CONSTRUCTOR POR DEFECTO
 	 * 
-	public Personaje(String nombre, String procedencia, int nivel, int defensaPropia, int fuerzaPropia, int vitalidadPropia, int contador, int critico, String raza, String clase) {
+	public Personaje(String nombre, String procedencia, int nivel, int defensaPropia, int fuerzaPropia, int vitalidadPropia, int magia, int critico, String raza, String clase) {
 		super();
 		this.nombre = nombre;
 		this.procedencia = procedencia;
@@ -36,7 +36,7 @@ public abstract class Personaje {
 		this.fuerzaTotal = fuerzaPropia;       // <- echa solo para el sistema de combate
 		this.vitalidadPropia = vitalidadPropia;//<- aqui se modificaran todos los valores reducciones o sumas y se restaurara desde arriba pero no divisiones
 		this.vitalidadTotal = vitalidadPropia; // <- echa solo para el sistema de combate
-		this.contador = contador;
+		this.magia = magia;
 		this.critico = critico;
 		this.raza = raza;
 		this.clase = clase;
@@ -97,11 +97,11 @@ public abstract class Personaje {
 	public void setVitalidadPropia(int vitalidadPropia) {
 		this.vitalidadPropia = vitalidadPropia;
 	}
-	public int getContador() {
-		return contador;
+	public int getmagia() {
+		return magia;
 	}
-	public void setContador(int contador) {
-		this.contador = contador;
+	public void setmagia(int magia) {
+		this.magia = magia;
 	}
 	public int getCritico() {
 		return critico;
