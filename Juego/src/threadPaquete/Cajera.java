@@ -6,7 +6,16 @@ public class Cajera {
 
 	private String nombre;
 
+	
+	
 	// Constructor, getter y setter
+
+	public Cajera(Cliente cliente, String nombre) {
+		super();
+		this.cliente = cliente;
+		this.nombre = nombre;
+	}
+
 
 	public void procesarCompra(Cliente cliente, long timeStamp) {
 
