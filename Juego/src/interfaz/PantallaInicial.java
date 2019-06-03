@@ -10,6 +10,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import pruebasMusica.AudioFilePlayer;
+import threadPaquete.ThreadPropio;
+
 //import pruebasMusica.AudioFilePlayer;
 
 import javax.swing.JLabel;
@@ -37,7 +40,6 @@ public class PantallaInicial extends JFrame {
 	private static final int ALTO = 700;
 	private static final long serialVersionUID = 1L;
 	private Imagen contentPane;
-	//private AudioFilePlayer player;
 	private InterfazCrearPersonaje crear;
 
 	/**
@@ -49,6 +51,10 @@ public class PantallaInicial extends JFrame {
 				try {
 					PantallaInicial frame = new PantallaInicial();
 					frame.setVisible(true);
+					
+					//tienen que ejecutarse a la vez, la ventana y la cancion
+					//ThreadPropio proceso = new ThreadPropio("proceso cancion");
+					//proceso.run();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -74,11 +80,7 @@ public class PantallaInicial extends JFrame {
 		contentPane.setBackground("src/imagenes/imagenInterfazNG.jpg");
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
-		
-		//
-		//player = new AudioFilePlayer ();
-		//
-		
+				
 		Imagen panelTop = new Imagen();
 		panelTop.setOpaque(false);
 		contentPane.add(panelTop, BorderLayout.NORTH);
@@ -117,10 +119,6 @@ public class PantallaInicial extends JFrame {
 		panelBottom.add(btnCargarPartida);
 		panelBottom.add(btnCerrar);
 		
-       //player.play("src/musica/cancionkh3.wav");
-        
-
-
 	}
 	
     protected void llamar() {
@@ -131,45 +129,4 @@ public class PantallaInicial extends JFrame {
 
 	}
 
-	public void play(String filePath) {
-        final File file = new File(filePath);
-
-        try (final AudioInputStream in = getAudioInputStream(file)) {
-
-            final AudioFormat outFormat = getOutFormat(in.getFormat());
-            final Info info = new Info(SourceDataLine.class, outFormat);
-
-            try (final SourceDataLine line =
-                     (SourceDataLine) AudioSystem.getLine(info)) {
-
-                if (line != null) {
-                    line.open(outFormat);
-                    line.start();
-                    stream(getAudioInputStream(outFormat, in), line);
-                    line.drain();
-                    line.stop();
-                }
-            }
-
-        } catch (UnsupportedAudioFileException 
-               | LineUnavailableException 
-               | IOException e) {
-            throw new IllegalStateException(e);
-        }
-    }
-    
-    private AudioFormat getOutFormat(AudioFormat inFormat) {
-        final int ch = inFormat.getChannels();
-
-        final float rate = inFormat.getSampleRate();
-        return new AudioFormat(PCM_SIGNED, rate, 16, ch, ch * 2, rate, false);
-    }
-
-    private void stream(AudioInputStream in, SourceDataLine line) 
-        throws IOException {
-        final byte[] buffer = new byte[4096];
-        for (int n = 0; n != -1; n = in.read(buffer, 0, buffer.length)) {
-            line.write(buffer, 0, n);
-        }
-    }
 }

@@ -215,20 +215,37 @@ public class InterfazCrearPersonaje extends JFrame implements ActionListener{
 
 		int resp=JOptionPane.showConfirmDialog(null,"Quieres empezar tu historia como " + textFieldNombre.getText() + ", " + textFieldClase.getText());
 		
-	      if (JOptionPane.OK_OPTION == resp){
-	    	  
-	   System.out.println("Selecciona opción Afirmativa");
-	 }
-	      else{
-	    System.out.println("No selecciona una opción afirmativa");
-	   }
+		if (JOptionPane.OK_OPTION == resp) {
+			
+			Heroe principal = crearPersonajePrincipal();
+			InterfazNivelMazmorraEntrar entrar = new InterfazNivelMazmorraEntrar(principal);
+			entrar.setVisible(true);
+			
+		}		
+	}
+
+	private Heroe crearPersonajePrincipal() {
 		
+		//TODO numberformatexception
+		
+		String nombre = textFieldNombre.getText();
+		int defensa = Integer.parseInt(textFieldDefensa.getText());
+		int ataque = Integer.parseInt(textFieldAtaque.getText());
+		int vitalidad = Integer.parseInt(textFieldVit.getText());
+		int magia = Integer.parseInt(textFieldMagia.getText());
+		int critico = Integer.parseInt(textFieldCritico.getText());
+		String clase = textFieldClase.getText();
+		
+		Heroe principal = new Heroe(nombre,"",1,defensa,ataque,vitalidad,magia,critico,"",clase);
+		principal.setNivelMazmorra("1");
+		
+		return principal;
 	}
 
 	private void crearPersonajesEstandar() {
 
 		Guerrero = new Heroe(
-				
+
 				"",//nombre
 				"",//procedencia
 				1,//lvl
@@ -289,7 +306,7 @@ public class InterfazCrearPersonaje extends JFrame implements ActionListener{
 				textFieldVit.setText(String.valueOf(Guerrero.getVitalidadPropia()));
 				textFieldAtaque.setText(String.valueOf(Guerrero.getFuerzaPropia()));
 				textFieldClase.setText("Guerrero");
-				textFieldCritico.setText(String.valueOf(Guerrero.getCritico())+ "%");
+				textFieldCritico.setText(String.valueOf(Guerrero.getCritico()));
 				textFieldDefensa.setText(String.valueOf(Guerrero.getDefensaPropia()));
 				textFieldMagia.setText(String.valueOf(Guerrero.getmagia()));				
 				
@@ -302,7 +319,7 @@ public class InterfazCrearPersonaje extends JFrame implements ActionListener{
 				textFieldVit.setText(String.valueOf(Hechicera.getVitalidadPropia()));
 				textFieldAtaque.setText(String.valueOf(Hechicera.getFuerzaPropia()));
 				textFieldClase.setText("Hechicera");
-				textFieldCritico.setText(String.valueOf(Hechicera.getCritico())+ "%");
+				textFieldCritico.setText(String.valueOf(Hechicera.getCritico()));
 				textFieldDefensa.setText(String.valueOf(Hechicera.getDefensaPropia()));
 				textFieldMagia.setText(String.valueOf(Hechicera.getmagia()));
 				
@@ -315,7 +332,7 @@ public class InterfazCrearPersonaje extends JFrame implements ActionListener{
 				textFieldVit.setText(String.valueOf(Asesino.getVitalidadPropia()));
 				textFieldAtaque.setText(String.valueOf(Asesino.getFuerzaPropia()));
 				textFieldClase.setText("Asesino");
-				textFieldCritico.setText(String.valueOf(Asesino.getCritico()) + "%");
+				textFieldCritico.setText(String.valueOf(Asesino.getCritico()));
 				textFieldDefensa.setText(String.valueOf(Asesino.getDefensaPropia()));
 				textFieldMagia.setText(String.valueOf(Asesino.getmagia()));
 				

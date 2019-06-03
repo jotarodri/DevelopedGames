@@ -22,6 +22,7 @@ public abstract class Personaje {
 	protected int critico;
 	protected String raza;
 	protected String clase;
+	protected String nivelMazmorra;
 	
 	/* CONSTRUCTOR POR DEFECTO
 	 * 
@@ -121,7 +122,14 @@ public abstract class Personaje {
 	public void setClase(String clase) {
 		this.clase = clase;
 	}
+	
+	public void setNivelMazmorra(String nivelMazmorra) {
+		this.nivelMazmorra = nivelMazmorra;
+	}
 
+	public String getNivelMazmorra() {
+		return this.nivelMazmorra;
+	}
 
 	//metodos de la clase
 
