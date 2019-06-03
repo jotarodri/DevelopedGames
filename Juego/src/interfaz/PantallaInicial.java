@@ -49,9 +49,12 @@ public class PantallaInicial extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+
+
 					PantallaInicial frame = new PantallaInicial();
 					frame.setVisible(true);
-					
+
+
 					//tienen que ejecutarse a la vez, la ventana y la cancion
 					//ThreadPropio proceso = new ThreadPropio("proceso cancion");
 					//proceso.run();
@@ -66,6 +69,7 @@ public class PantallaInicial extends JFrame {
 	 * Create the frame.
 	 */
 	public PantallaInicial() {
+		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		setBounds(100, 100, ANCHO, ALTO);

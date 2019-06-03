@@ -52,7 +52,7 @@ public class InterfazNivelMazmorraEntrar extends JFrame {
 		buttonLVL1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				entrarMenuPrincipal();
+				entrarMenuPrincipal("1");
 				
 			}
 		});
@@ -63,6 +63,9 @@ public class InterfazNivelMazmorraEntrar extends JFrame {
 		buttonLVL2 = new JButton("2");
 		buttonLVL2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+
+				entrarMenuPrincipal("2");
+
 			}
 		});
 		buttonLVL2.setEnabled(false);
@@ -70,11 +73,25 @@ public class InterfazNivelMazmorraEntrar extends JFrame {
 		contentPane.add(buttonLVL2);
 		
 		buttonLVL3 = new JButton("3");
+		buttonLVL3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				entrarMenuPrincipal("3");
+
+			}
+		});
 		buttonLVL3.setEnabled(false);
 		buttonLVL3.setBounds(882, 112, 270, 157);
 		contentPane.add(buttonLVL3);
 		
 		buttonFinal = new JButton("Final");
+		buttonFinal.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				entrarMenuPrincipal("final");
+
+			}
+		});
 		buttonFinal.setEnabled(false);
 		buttonFinal.setBounds(216, 321, 757, 238);
 		contentPane.add(buttonFinal);
@@ -82,9 +99,12 @@ public class InterfazNivelMazmorraEntrar extends JFrame {
 		enableBoton();
 	}
 
-	protected void entrarMenuPrincipal() {
+	protected void entrarMenuPrincipal(String nivel) {
 
-		System.out.println(buttonLVL1.getText());
+
+		InterfazPrincipal principal = new InterfazPrincipal(this.principal, nivel);
+		principal.setVisible(true);
+		this.setVisible(false);
 		
 	}
 
