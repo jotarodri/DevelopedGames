@@ -15,7 +15,10 @@ import java.awt.Font;
 import java.awt.Color;
 import javax.swing.border.LineBorder;
 
+import dominio.BOSS;
+import dominio.Criatura;
 import dominio.Heroe;
+import dominio.Personaje;
 
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -29,6 +32,8 @@ public class InterfazCombate extends JFrame {
 	private static final long serialVersionUID = 1L;
 	
 	private Heroe bueno;
+	private BOSS maloBoss;
+	private Criatura maloCriatura;
 	
 	private JPanel contentPane;
 	private Imagen guerrero;
@@ -38,10 +43,8 @@ public class InterfazCombate extends JFrame {
 	private JButton btnDefender;
 	private JButton btnObjetos;
 	private JButton btnHuir;
-
-	/**
-	 * Launch the application.
-	 */
+	
+/*
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -53,12 +56,15 @@ public class InterfazCombate extends JFrame {
 				}
 			}
 		});
-	}
+	}*/
 
 	/**
 	 * Create the frame.
 	 */
-	public InterfazCombate() {
+	public InterfazCombate(Personaje Bueno, Personaje Malo) {
+		
+		this.bueno =(Heroe) Bueno;
+		
 		setResizable(false);
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -233,7 +239,7 @@ public class InterfazCombate extends JFrame {
 			villano.setBackground("src/imagenes/sprites/PerroCriatura/defend.png");
 			
 			//TODO accion defender
-
+			permitirBotones();
 			break;
 
 		default:

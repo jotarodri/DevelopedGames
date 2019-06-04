@@ -220,6 +220,7 @@ public class InterfazCrearPersonaje extends JFrame implements ActionListener{
 			Heroe principal = crearPersonajePrincipal();
 			InterfazNivelMazmorraEntrar entrar = new InterfazNivelMazmorraEntrar(principal);
 			entrar.setVisible(true);
+			setVisible(false);
 			
 		}		
 	}
