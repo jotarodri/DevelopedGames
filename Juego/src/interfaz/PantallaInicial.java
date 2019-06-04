@@ -49,15 +49,20 @@ public class PantallaInicial extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+					
+					new Thread(new Runnable() {
+						
+						@Override
+						public void run() {
+							
+							PantallaInicial frame = new PantallaInicial();
+							frame.setVisible(true);
+							ThreadPropio proceso = new ThreadPropio("proceso cancion");
+							proceso.run();
+							
+						}
+					}).start();
 
-
-					PantallaInicial frame = new PantallaInicial();
-					frame.setVisible(true);
-
-
-					//tienen que ejecutarse a la vez, la ventana y la cancion
-					//ThreadPropio proceso = new ThreadPropio("proceso cancion");
-					//proceso.run();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -75,11 +80,6 @@ public class PantallaInicial extends JFrame {
 		setBounds(100, 100, ANCHO, ALTO);
 		contentPane = new Imagen();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		
-		//pantalla completa
-		//setUndecorated(true); 
-		//setExtendedState(MAXIMIZED_BOTH);
-		//----
 		
 		contentPane.setBackground("src/imagenes/imagenInterfazNG.jpg");
 		setContentPane(contentPane);

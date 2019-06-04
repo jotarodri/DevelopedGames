@@ -130,7 +130,7 @@ public class InterfazNivelMazmorraEntrar extends JFrame {
 			
 			break;
 			
-		case "final":
+		case "4":
 			
 			buttonFinal.setEnabled(true);
 			
