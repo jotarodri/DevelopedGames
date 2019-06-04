@@ -44,7 +44,7 @@ public class InterfazCombate extends JFrame {
 	private JButton btnObjetos;
 	private JButton btnHuir;
 	
-/*
+
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -56,14 +56,14 @@ public class InterfazCombate extends JFrame {
 				}
 			}
 		});
-	}*/
+	}
 
 	/**
 	 * Create the frame.
 	 */
-	public InterfazCombate(Personaje Bueno, Personaje Malo) {
+	public InterfazCombate(/*Personaje Bueno, Personaje Malo*/) {
 		
-		this.bueno =(Heroe) Bueno;
+		//this.bueno =(Heroe) Bueno;
 		
 		setResizable(false);
 
@@ -167,7 +167,7 @@ public class InterfazCombate extends JFrame {
 			guerrero.setBounds(i, 187, 321, 301);
 			
 			try {
-				Thread.sleep(5);
+				Thread.sleep(2);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 
@@ -179,7 +179,7 @@ public class InterfazCombate extends JFrame {
 			guerrero.setBounds(i, 187, 321, 301);
 			
 			try {
-				Thread.sleep(5);
+				Thread.sleep(2);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -257,7 +257,7 @@ public class InterfazCombate extends JFrame {
 			villano.setBounds(i, 177, 338, 311);
 			
 			try {
-				Thread.sleep(5);
+				Thread.sleep(2);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
@@ -269,7 +269,7 @@ public class InterfazCombate extends JFrame {
 			villano.setBounds(i, 177, 338, 311);
 			
 			try {
-				Thread.sleep(5);
+				Thread.sleep(2);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}

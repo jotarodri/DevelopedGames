@@ -57,8 +57,8 @@ public class PantallaInicial extends JFrame {
 							
 							PantallaInicial frame = new PantallaInicial();
 							frame.setVisible(true);
-							//ThreadPropio proceso = new ThreadPropio("proceso cancion");
-							//proceso.run();
+							ThreadPropio proceso = new ThreadPropio("proceso cancion");
+							proceso.run();
 							
 						}
 					}).start();
