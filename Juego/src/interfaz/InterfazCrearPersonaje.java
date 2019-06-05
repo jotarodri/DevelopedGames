@@ -237,7 +237,7 @@ public class InterfazCrearPersonaje extends JFrame implements ActionListener{
 		int critico = Integer.parseInt(textFieldCritico.getText());
 		String clase = textFieldClase.getText();
 		
-		Heroe principal = new Heroe(nombre,"",1,defensa,ataque,vitalidad,magia,critico,"",clase);
+		Heroe principal = new Heroe(nombre,"",1,defensa,ataque,vitalidad,magia,critico,"src/imagenes/sprites/AsesinoHeroe/attack_buff.png",clase);
 		principal.setNivelMazmorra("1");
 		
 		return principal;
@@ -255,7 +255,7 @@ public class InterfazCrearPersonaje extends JFrame implements ActionListener{
 				500,//vit
 				0,//magia
 				5,//critico
-				"",//raza
+				"",//imagen
 				"Guerrero"//clase
 				
 				);
@@ -270,7 +270,7 @@ public class InterfazCrearPersonaje extends JFrame implements ActionListener{
 				200,//vit
 				0,//magia
 				20,//critico
-				"",//raza
+				"src/imagenes/sprites/AsesinoHeroe/attack_buff.png",//imagen
 				"Asesino"//clase
 				
 				);
@@ -285,7 +285,7 @@ public class InterfazCrearPersonaje extends JFrame implements ActionListener{
 				400,//vit
 				200,//magia
 				0,//critico
-				"",//raza
+				"src/imagenes/sprites/Heroina/attack_miracle.png",//imagen
 				"Hechicera"//clase
 				
 				);

@@ -43,25 +43,18 @@ public class InterfazCombate extends JFrame {
 	private JButton btnDefender;
 	private JButton btnObjetos;
 	private JButton btnHuir;
-	
+	private Heroe personajePrincipal;
+	private Criatura maloMaloso;
 
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					InterfazCombate frame = new InterfazCombate();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.
 	 */
-	public InterfazCombate(/*Personaje Bueno, Personaje Malo*/) {
+	public InterfazCombate(Heroe principal, Criatura malo) {
+		
+		
+		personajePrincipal = principal;
+		maloMaloso = malo;
 		
 		//this.bueno =(Heroe) Bueno;
 		
@@ -129,6 +122,8 @@ public class InterfazCombate extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 
 				guerrero.setBackground("src/imagenes/sprites/HeroeHombre/defend.png");
+			//	defender()
+				turnoMalo();//esto va al FINAL DE LA FUNCION DEFENDER
 
 			}
 		});
@@ -144,14 +139,15 @@ public class InterfazCombate extends JFrame {
 
 	public void posicionInicio() {
 
-		guerrero.setBackground("src/imagenes/sprites/HeroeHombre/attack_sword.png");
+		guerrero.setBackground(personajePrincipal.getImagen());
 		guerrero.setBounds(113, 187, 321, 301);
 
 	}
 
 	public void posicionInicioMalo() {
 
-		villano.setBackground("src/imagenes/sprites/PerroCriatura/perro.png");
+		
+		villano.setBackground(maloMaloso.getImagen());
 		villano.setBounds(578, 177, 338, 311);
 
 	}
