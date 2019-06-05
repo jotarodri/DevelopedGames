@@ -20,12 +20,22 @@ public abstract class Personaje {
 	protected int vitalidadTotal;
 	protected int magia;
 	protected int critico;
-	protected String raza;
+	protected String imagen;
+	protected String tipo; 
+	
+
+
 	protected String clase;
 	protected String nivelMazmorra;
 	
-	/* CONSTRUCTOR POR DEFECTO
-	 * 
+	//CONSTRUCTOR POR DEFECTO
+	  
+	
+	public Personaje() {
+		
+		
+	}
+	
 	public Personaje(String nombre, String procedencia, int nivel, int defensaPropia, int fuerzaPropia, int vitalidadPropia, int magia, int critico, String raza, String clase) {
 		super();
 		this.nombre = nombre;
@@ -39,11 +49,11 @@ public abstract class Personaje {
 		this.vitalidadTotal = vitalidadPropia; // <- echa solo para el sistema de combate
 		this.magia = magia;
 		this.critico = critico;
-		this.raza = raza;
+		this.imagen = raza;
 		this.clase = clase;
 	}
 	
-	*/
+	
 	
 	//----Getters de las variables estaticas
 	
@@ -111,10 +121,10 @@ public abstract class Personaje {
 		this.critico = critico;
 	}
 	public String getRaza() {
-		return raza;
+		return imagen;
 	}
 	public void setRaza(String raza) {
-		this.raza = raza;
+		this.imagen = raza;
 	}
 	public String getClase() {
 		return clase;
@@ -144,5 +154,13 @@ public abstract class Personaje {
 	public void defender(Personaje p) {
 
 	}
-
+	
+	public String getImagen() {
+		return this.imagen;
+	}
+	
+	public void SetImagen(String imagen) {
+		 this.imagen = imagen; 
+	}
+	
 }

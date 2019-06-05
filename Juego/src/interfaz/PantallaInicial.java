@@ -1,4 +1,4 @@
-package interfaz;
+ package interfaz;
 
 import static javax.sound.sampled.AudioFormat.Encoding.PCM_SIGNED;
 import static javax.sound.sampled.AudioSystem.getAudioInputStream;
