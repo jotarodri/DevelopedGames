@@ -11,11 +11,14 @@ import javax.swing.border.EmptyBorder;
 
 import imagenes.Imagen;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import java.awt.Color;
 import javax.swing.border.LineBorder;
 
 import dominio.BOSS;
+import dominio.Combate;
 import dominio.Criatura;
 import dominio.Heroe;
 import dominio.Personaje;
@@ -46,6 +49,7 @@ public class InterfazCombate extends JFrame {
 	private Heroe personajePrincipal;
 	private Criatura maloMaloso;
 	private JLabel lblVidaDelEnemigo;
+	private JLabel lblTuVida;
 	
 	private String imagenEstandar;
 	private String ImagenAtacar;
@@ -54,6 +58,8 @@ public class InterfazCombate extends JFrame {
 	private String imagenEstandarMalo;
 	private String ImagenAtacarMalo;
 	private String ImagenDefenderMalo;
+	
+	private Combate combateVS;
 
 
 	/**
@@ -61,9 +67,10 @@ public class InterfazCombate extends JFrame {
 	 */
 	public InterfazCombate(Heroe principal, Criatura malo) {
 		
-		
 		personajePrincipal = principal;
 		maloMaloso = malo;
+		
+		combateVS = new Combate(personajePrincipal, maloMaloso);
 		
 		establecerImagenes();
 		
@@ -109,14 +116,20 @@ public class InterfazCombate extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 
+				combateVS.resetearStatsHeroe();
+				combateVS.atacar();
+
 				new Thread(new Runnable() {
-					
 					@Override
 					public void run() {
 						atacarHeroe();
 					}
 				}).start();
-												
+				
+				condicionFinal();
+				
+				actualizarVidas();
+																
 			}
 			
 		});
@@ -131,10 +144,11 @@ public class InterfazCombate extends JFrame {
 		 btnDefender = new JButton("Defender");
 		btnDefender.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-
+				
+				combateVS.resetearStatsHeroe();
 				guerrero.setBackground(ImagenDefender);
-			//	defender()
-				turnoMalo();//esto va al FINAL DE LA FUNCION DEFENDER
+				combateVS.defender();
+				turnoMalo();
 
 			}
 		});
@@ -146,14 +160,24 @@ public class InterfazCombate extends JFrame {
 		btnObjetos.setBounds(513, 56, 129, 48);
 		panel.add(btnObjetos);
 		
-		JLabel lblTuVida = new JLabel("Tu vida: " + personajePrincipal.getVitalidadPropia());
+		lblTuVida = new JLabel();
 		lblTuVida.setBounds(28, 38, 172, 38);
 		panel.add(lblTuVida);
 		
 		lblVidaDelEnemigo = new JLabel("Vida del enemigo = " + maloMaloso.getVitalidadPropia());
 		lblVidaDelEnemigo.setBounds(719, 38, 236, 33);
 		panel.add(lblVidaDelEnemigo);
+		
+		actualizarVidas();
+		condicionFinal();
 
+	}
+
+	private void actualizarVidas() {
+
+		lblVidaDelEnemigo.setText("Vida del enemigo = " + maloMaloso.getVitalidadPropia());
+		lblTuVida.setText("Tu vida = " + personajePrincipal.getVitalidadPropia());
+		
 	}
 
 	public void posicionInicio() {
@@ -205,6 +229,7 @@ public class InterfazCombate extends JFrame {
 		guerrero.setBackground(imagenEstandar);
 		
 		turnoMalo();
+		condicionFinal();
 
 	}
 
@@ -225,9 +250,7 @@ public class InterfazCombate extends JFrame {
 	}
 
 	public void turnoMalo() {
-		
-		System.out.println("turno del boss");
-		
+				
 		Random rand = new Random();
 		
 		int n = rand.nextInt(2);
@@ -235,6 +258,8 @@ public class InterfazCombate extends JFrame {
 		switch (n) {
 		
 		case 0:
+			
+			combateVS.resetearStatsCriatura();
 									
 			new Thread(new Runnable() {
 				
@@ -243,16 +268,22 @@ public class InterfazCombate extends JFrame {
 
 					atacarVillano();					
 					permitirBotones();
+					actualizarVidas();
 
 				}
 			}).start();
-
+			
+			combateVS.atacar();
+			
+			actualizarVidas();
 			break;
 
 		case 1:
 
-			villano.setBackground(ImagenDefenderMalo);
+			combateVS.resetearStatsCriatura();
+			combateVS.defender();
 			
+			villano.setBackground(ImagenDefenderMalo);
 			//TODO accion defender
 			permitirBotones();
 			break;
@@ -294,6 +325,26 @@ public class InterfazCombate extends JFrame {
 		villano.setBackground(imagenEstandarMalo);
 		
 
+	}
+	
+	private void condicionFinal() {
+	
+		if (maloMaloso.getVitalidadPropia() <= 0) {
+			
+			JOptionPane.showMessageDialog(null, "Ha muerto el boss");
+			//funcion exp
+			dispose();
+			
+		} 
+		
+		if (personajePrincipal.getVitalidadPropia() <=0) {
+			
+			JOptionPane.showMessageDialog(null, "Has muerto tonto");
+			//funcion exp
+			dispose();
+			
+		}
+		
 	}
 	
 	private void establecerImagenes() {
@@ -343,9 +394,7 @@ public class InterfazCombate extends JFrame {
 		
 		
 	}	
-		
-		
-		
+			
 	}
 	
 	

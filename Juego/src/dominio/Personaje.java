@@ -13,13 +13,25 @@ public abstract class Personaje {
 	protected String procedencia;
 	protected int nivel;
 	protected int defensaPropia;
-	protected int defensaTotal;
+	protected int defensaOriginal;
 	protected int fuerzaPropia;
-	protected int fuerzaTotal;
+	protected int fuerzaOriginal;
 	protected int vitalidadPropia;
-	protected int vitalidadTotal;
+	protected int vitalidadOriginal;
 	protected int magia;
 	protected int critico;
+	public int getDefensaOriginal() {
+		return defensaOriginal;
+	}
+
+	public int getFuerzaOriginal() {
+		return fuerzaOriginal;
+	}
+
+	public int getVitalidadOriginal() {
+		return vitalidadOriginal;
+	}
+
 	protected String imagen;
 	protected String tipo; 
 	
@@ -42,11 +54,11 @@ public abstract class Personaje {
 		this.procedencia = procedencia;
 		this.nivel = nivel;
 		this.defensaPropia = defensaPropia;    //<- aqui se modificaran todos los valores reducciones o sumas y se restaurara desde arriba pero no divisiones
-		this.defensaTotal = defensaPropia;     // <- echa solo para el sistema de combate
+		this.defensaOriginal = defensaPropia;     // <- echa solo para el sistema de combate
 		this.fuerzaPropia = fuerzaPropia;      //<- aqui se modificaran todos los valores reducciones o sumas y se restaurara desde arriba pero no divisiones
-		this.fuerzaTotal = fuerzaPropia;       // <- echa solo para el sistema de combate
+		this.fuerzaOriginal = fuerzaPropia;       // <- echa solo para el sistema de combate
 		this.vitalidadPropia = vitalidadPropia;//<- aqui se modificaran todos los valores reducciones o sumas y se restaurara desde arriba pero no divisiones
-		this.vitalidadTotal = vitalidadPropia; // <- echa solo para el sistema de combate
+		this.vitalidadOriginal = vitalidadPropia; // <- echa solo para el sistema de combate
 		this.magia = magia;
 		this.critico = critico;
 		this.imagen = raza;
@@ -145,14 +157,6 @@ public abstract class Personaje {
 
 	public void andar() {
 		//TODO hacer algo como andar en este metodoS
-	}
-
-	public void atacar(Personaje p) {
-		
-	}
-
-	public void defender(Personaje p) {
-
 	}
 	
 	public String getImagen() {
