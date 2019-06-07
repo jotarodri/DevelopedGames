@@ -45,6 +45,15 @@ public class InterfazCombate extends JFrame {
 	private JButton btnHuir;
 	private Heroe personajePrincipal;
 	private Criatura maloMaloso;
+	private JLabel lblVidaDelEnemigo;
+	
+	private String imagenEstandar;
+	private String ImagenAtacar;
+	private String ImagenDefender;
+	
+	private String imagenEstandarMalo;
+	private String ImagenAtacarMalo;
+	private String ImagenDefenderMalo;
 
 
 	/**
@@ -55,6 +64,8 @@ public class InterfazCombate extends JFrame {
 		
 		personajePrincipal = principal;
 		maloMaloso = malo;
+		
+		establecerImagenes();
 		
 		//this.bueno =(Heroe) Bueno;
 		
@@ -121,7 +132,7 @@ public class InterfazCombate extends JFrame {
 		btnDefender.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 
-				guerrero.setBackground("src/imagenes/sprites/HeroeHombre/defend.png");
+				guerrero.setBackground(ImagenDefender);
 			//	defender()
 				turnoMalo();//esto va al FINAL DE LA FUNCION DEFENDER
 
@@ -134,12 +145,20 @@ public class InterfazCombate extends JFrame {
 		btnObjetos = new JButton("Objetos");
 		btnObjetos.setBounds(513, 56, 129, 48);
 		panel.add(btnObjetos);
+		
+		JLabel lblTuVida = new JLabel("Tu vida: " + personajePrincipal.getVitalidadPropia());
+		lblTuVida.setBounds(28, 38, 172, 38);
+		panel.add(lblTuVida);
+		
+		lblVidaDelEnemigo = new JLabel("Vida del enemigo = " + maloMaloso.getVitalidadPropia());
+		lblVidaDelEnemigo.setBounds(719, 38, 236, 33);
+		panel.add(lblVidaDelEnemigo);
 
 	}
 
 	public void posicionInicio() {
 
-		guerrero.setBackground(personajePrincipal.getImagen());
+		guerrero.setBackground(imagenEstandar);
 		guerrero.setBounds(113, 187, 321, 301);
 
 	}
@@ -156,7 +175,7 @@ public class InterfazCombate extends JFrame {
 		
 		bloquearBotones();
 
-		guerrero.setBackground("src/imagenes/sprites/HeroeHombre/attack_charge.png");
+		guerrero.setBackground(ImagenAtacar);
 		
 		for (int i = 113; i < 383; i++) {
 			
@@ -183,7 +202,7 @@ public class InterfazCombate extends JFrame {
 			
 		}
 		
-		guerrero.setBackground("src/imagenes/sprites/HeroeHombre/attack_sword.png");
+		guerrero.setBackground(imagenEstandar);
 		
 		turnoMalo();
 
@@ -232,7 +251,7 @@ public class InterfazCombate extends JFrame {
 
 		case 1:
 
-			villano.setBackground("src/imagenes/sprites/PerroCriatura/defend.png");
+			villano.setBackground(ImagenDefenderMalo);
 			
 			//TODO accion defender
 			permitirBotones();
@@ -246,7 +265,7 @@ public class InterfazCombate extends JFrame {
 
 	protected void atacarVillano() {
 
-		villano.setBackground("src/imagenes/sprites/PerroCriatura/attack_melee.png");
+		villano.setBackground(ImagenAtacarMalo);
 		
 		for (int i = 578; i > 120; i--) {
 			
@@ -272,9 +291,62 @@ public class InterfazCombate extends JFrame {
 			
 		}
 		
-		villano.setBackground("src/imagenes/sprites/PerroCriatura/perro.png");
+		villano.setBackground(imagenEstandarMalo);
 		
 
 	}
+	
+	private void establecerImagenes() {
+		
+		switch (personajePrincipal.getClase()) {
+		
+	case "Guerrero":
+		imagenEstandar = personajePrincipal.getImagen();
+		ImagenAtacar = "src/imagenes/sprites/HeroeHombre/attack_charge.png";
+		ImagenDefender = "src/imagenes/sprites/HeroeHombre/defend.png";
+		break;
 
+	case "Asesino":
+		imagenEstandar = personajePrincipal.getImagen();
+		ImagenAtacar = "src/imagenes/sprites/AsesinoHeroe/attack_dagger.png";
+		ImagenDefender = "src/imagenes/sprites/AsesinoHeroe/defend.png";
+		break;
+		
+	case "Hechicera":
+		imagenEstandar = personajePrincipal.getImagen();
+		ImagenAtacar = "src/imagenes/sprites/Heroina/attack_mace.png";
+		ImagenDefender = "src/imagenes/sprites/Heroina/defend.png";
+		break;
+		
+	}
+		
+		
+	switch (maloMaloso.getNombre()) {
+	
+	case "Perro Sarnoso":
+		imagenEstandarMalo = maloMaloso.getImagen();
+		ImagenAtacarMalo = "src/imagenes/sprites/PerroCriatura/attack_melee.png";
+		ImagenDefenderMalo = "src/imagenes/sprites/PerroCriatura/defend.png";
+		break;
+
+	case "Bruja":
+		imagenEstandarMalo = maloMaloso.getImagen();
+		ImagenAtacarMalo = "src/imagenes/sprites/BrujaBoss/mujermala.png";
+		ImagenDefenderMalo = "src/imagenes/sprites/BrujaBoss/defendMujer.png";
+		break;
+		
+	case "Araña Chunga":
+		imagenEstandarMalo = maloMaloso.getImagen();
+		ImagenAtacarMalo = "src/imagenes/sprites/arañaChunga/attack_melee.png";
+		ImagenDefenderMalo = "src/imagenes/sprites/arañaChunga/defend.png";
+		break;
+		
+		
+	}	
+		
+		
+		
+	}
+	
+	
 }

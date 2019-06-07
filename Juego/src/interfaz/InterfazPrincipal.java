@@ -67,7 +67,7 @@ public class InterfazPrincipal extends JFrame {
 		btnVsCriatura.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				llamarCombateCriatura("1");
+				llamarCombateCriatura();
 				
 			}
 		});
@@ -135,9 +135,9 @@ public class InterfazPrincipal extends JFrame {
 
 	}
 
-	protected void llamarCombateCriatura(String nivelMazmorra) {
+	protected void llamarCombateCriatura() {
 		
-		criatura = generarCriaturar(nivelMazmorra);
+		criatura = generarCriaturar();
 		
 		InterfazCombate i = new InterfazCombate(heroePrincipal, criatura);
 		
@@ -175,56 +175,35 @@ public class InterfazPrincipal extends JFrame {
 	}
 	
 	
-	public Criatura generarCriaturar(String nivelMazmorra) {
+	public Criatura generarCriaturar() {
 		
 		String aux = "";
 	
+		Criatura c = new Criatura();
 		
 		String nombreCriatua = "";
-		String imagen = "src/imagenes/sprites/BrujaBoss/mujermala.png";
+		String imagen = "";
 		
 		Random r = new Random();
-		int nAleatorio = r.nextInt(3);
+		int nAleatorio = 2;
+				//r.nextInt(3);
 		
 		if (nAleatorio == 0) {
 			nombreCriatua = "Perro Sarnoso";
 			imagen = "src/imagenes/sprites/PerroCriatura/perro.png";
+			
+			
 		}else if (nAleatorio == 1) {
 			nombreCriatua = "Araña Chunga";
 			imagen = "src/imagenes/sprites/arañaChunga/attack_melee.png";
+			
 		}else if (nAleatorio == 2) {
 			nombreCriatua = "Bruja";
 			imagen = "src/imagenes/sprites/BrujaBoss/mujermala.png";
 		}
 		
-		/*switch (nivelMazmorra) {
-		
-		case "1":
+		c = new Criatura(nombreCriatua, "",1, 20, 15, 350 , 0, 0 , imagen, "", 0);
 			
-			c = new Criatura(nombreCriatua, "", 5, 90, 20, 300, 0, 0, imagen, "", 0);
-			
-			break;
-			
-		case "2":
-			
-			
-			break;
-			
-		case "3":
-			
-							
-			break;
-			
-		case "4":
-			
-			
-			break;
-		}
-		*/
-		
-		Criatura c = new Criatura(nombreCriatua, "", 5, 90, 20, 300, 0, 0, imagen, "", 0);
-		
-		
 		return c;
 		
 		

@@ -11,5 +11,9 @@ public class Heroe extends Personaje{
 		
 		numeroDeHeoresCreados++;
 	}
+
+	public Heroe() {
+		// TODO Auto-generated constructor stub
+	}
 	
 }
