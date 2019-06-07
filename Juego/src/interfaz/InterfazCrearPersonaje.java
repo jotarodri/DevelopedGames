@@ -235,15 +235,36 @@ public class InterfazCrearPersonaje extends JFrame implements ActionListener{
 		int vitalidad = Integer.parseInt(textFieldVit.getText());
 		int magia = Integer.parseInt(textFieldMagia.getText());
 		int critico = Integer.parseInt(textFieldCritico.getText());
+		
 		String clase = textFieldClase.getText();
 		
-		Heroe principal = new Heroe(nombre,"",1,defensa,ataque,vitalidad,magia,critico,"src/imagenes/sprites/AsesinoHeroe/attack_buff.png",clase);
+		String imagen = "";
+		
+		if (clase.equals("Guerrero")){
+			imagen = "src/imagenes/sprites/HeroeHombre/attack_sword.png";
+		}
+		
+		if (clase.equals("Asesino")){
+			imagen = "src/imagenes/sprites/AsesinoHeroe/attack_buff.png";
+		}
+		
+		if (clase.equals("Hechicera")){
+			imagen = "src/imagenes/sprites/Heroina/attack_miracle.png";
+		}
+		
+		Heroe principal = new Heroe(nombre, "", 1,defensa, ataque, vitalidad, magia, critico, imagen, clase);
+				
+		principal.SetImagen(imagen);
+				//new Heroe(nombre,"",1,defensa,ataque,vitalidad,magia,critico,"src/imagenes/sprites/AsesinoHeroe/attack_buff.png",clase);
 		principal.setNivelMazmorra("1");
 		
 		return principal;
 	}
 
 	private void crearPersonajesEstandar() {
+		
+		
+		
 
 		Guerrero = new Heroe(
 
